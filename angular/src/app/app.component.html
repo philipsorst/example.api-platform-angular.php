@@ -1,4 +1,12 @@
-<h1>Hello World!</h1>
-<ul *ngIf="blogPosts">
-    <li *ngFor="let blogPost of blogPosts">{{blogPost.title}}</li>
-</ul>
+<nav class="navbar fixed-top navbar-light bg-light">
+    <a class="navbar-brand" href="#">Example</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/posts']">Posts</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>

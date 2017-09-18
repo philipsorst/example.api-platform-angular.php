@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {RestangularModule} from "ngx-restangular";
 import {RestangularConfigFactory} from "./restangular.factory";
+import {AppRoutingModule} from "./module/routing/app-routing.module";
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import {RestangularConfigFactory} from "./restangular.factory";
     ],
     imports: [
         BrowserModule,
-        RestangularModule.forRoot(RestangularConfigFactory)
+        RestangularModule.forRoot(RestangularConfigFactory),
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]
