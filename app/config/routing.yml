@@ -1,6 +1,7 @@
 api:
     resource: '.'
     type: 'api_platform'
+    prefix: 'api'
 
 domain:
     resource: "@DomainBundle/Action/"

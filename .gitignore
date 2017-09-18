@@ -17,4 +17,6 @@
 !var/data/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
+/angular/node_modules/
 /web/bundles/
+/web/app/*
