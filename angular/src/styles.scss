@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+//$fa-font-path: '~font-awesome/fonts';
+$fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts" !default;
+@import '~font-awesome/scss/font-awesome.scss';
+
+body {
+    padding-top: 60px;
+}
