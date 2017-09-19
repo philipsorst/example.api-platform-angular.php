@@ -32,6 +32,7 @@ class User extends BaseUser
     protected $email;
 
     /**
+     * @Groups({"blog_post_list","blog_post_detail"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user"})
      */

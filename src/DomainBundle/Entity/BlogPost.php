@@ -7,16 +7,23 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
- * @ApiResource
+ * @ApiResource(
+ *     attributes={"order"={"created": "DESC"}, "normalization_context"={"groups"={"blog_post_list"}}},
+ *     itemOperations={
+ *          "get"={"method"="GET", "normalization_context"={"groups"={"blog_post_detail"}}}
+ *     }
+ *  )
  *
  * @author Philip Washington Sorst <philip@sorst.net>
  */
 class BlogPost
 {
     /**
+     * @Groups({"blog_post_list", "blog_post_detail"})
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
@@ -26,6 +33,7 @@ class BlogPost
     private $id;
 
     /**
+     * @Groups({"blog_post_list", "blog_post_detail"})
      * @ApiProperty(writable=false)
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=false)
@@ -35,6 +43,7 @@ class BlogPost
     private $author;
 
     /**
+     * @Groups({"blog_post_list", "blog_post_detail"})
      * @ApiProperty(writable=false)
      * @ORM\Column(type="datetime", nullable=false)
      *
@@ -43,6 +52,7 @@ class BlogPost
     private $created;
 
     /**
+     * @Groups({"blog_post_list", "blog_post_detail"})
      * @ORM\Column(type="string", nullable=false)
      *
      * @var string
@@ -50,6 +60,7 @@ class BlogPost
     private $title;
 
     /**
+     * @Groups({"blog_post_detail"})
      * @ORM\Column(type="string", nullable=false)
      *
      * @var string
@@ -57,6 +68,7 @@ class BlogPost
     private $content;
 
     /**
+     * @Groups({"blog_post_list", "blog_post_detail"})
      * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="blogPost")
      *

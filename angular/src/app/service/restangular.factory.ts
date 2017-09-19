@@ -1,5 +1,7 @@
+import {environment} from "../../environments/environment";
+
 export function RestangularConfigFactory(RestangularProvider) {
-    RestangularProvider.setBaseUrl('http://localhost/example.api-platform-angular.php/app_dev.php/api/');
+    RestangularProvider.setBaseUrl(environment.apiEndpoint);
     // JSON-LD @id support
     RestangularProvider.setRestangularFields({
         id: '@id',

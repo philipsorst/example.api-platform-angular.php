@@ -51,10 +51,12 @@
         ],
         "post-install-cmd": [
             "bin/set-permissions",
+            "cd angular && npm install && npm run-script build",
             "@symfony-scripts"
         ],
         "post-update-cmd": [
             "bin/set-permissions",
+            "cd angular && npm install && npm run-script build",
             "@symfony-scripts"
         ]
     },

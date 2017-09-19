@@ -3,12 +3,18 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {RestangularModule} from "ngx-restangular";
-import {RestangularConfigFactory} from "./restangular.factory";
 import {AppRoutingModule} from "./module/routing/app-routing.module";
+import {RestangularConfigFactory} from "./service/restangular.factory";
+import {BlogPostListComponent} from "./component/blogpost/blog-post-list.component";
+import {BlogPostDetailComponent} from "./component/blogpost/blog-post-detail.component";
+import {UserLoginComponent} from "./component/user/user-login.component";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        BlogPostListComponent,
+        BlogPostDetailComponent,
+        UserLoginComponent
     ],
     imports: [
         BrowserModule,

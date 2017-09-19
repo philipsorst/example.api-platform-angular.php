@@ -1,0 +1,14 @@
+<div class="card mb-3" *ngFor="let blogPost of blogPosts">
+    <div class="card-body">
+        <h4 class="card-title">{{blogPost.title}}</h4>
+        <h6 class="card-subtitle text-muted mb-3">by <a href="#">{{blogPost.author.fullname}}</a></h6>
+        <div class="row small text-muted">
+            <div class="col">
+                <span class="fa fa-fw fa-clock-o"></span>&nbsp;&nbsp;{{blogPost.created | date:'medium'}}
+            </div>
+            <div class="col">
+                <span class="fa fa-fw fa-comment-o"></span>&nbsp;&nbsp;{{blogPost.comments.length}} Comments
+            </div>
+        </div>
+    </div>
+</div>

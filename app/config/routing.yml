@@ -3,6 +3,16 @@ api:
     type: 'api_platform'
     prefix: 'api'
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+api_login_check:
+    path: /login/token
+
+gesdinet_jwt_refresh_token:
+    path:     /login/refresh
+    defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+
 domain:
     resource: "@DomainBundle/Action/"
     type:     'annotation'

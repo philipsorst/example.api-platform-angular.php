@@ -4,6 +4,7 @@ namespace DomainBundle\DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use DomainBundle\Entity\User;
 use Faker\Factory;
 
 /**
@@ -29,9 +30,11 @@ class Users extends Fixture
         $this->addReference(self::ADMIN, $user);
 
         for ($i = 0; $i < 50; $i++) {
+            /** @var User $user */
             $user = $userManager->createUser();
             $username = $fakeGenerator->userName;
             $user->setUsername($username);
+            $user->setFullname($fakeGenerator->name());
             $user->setEmail($fakeGenerator->email);
             $user->setPassword($username);
             $userManager->updateUser($user);
