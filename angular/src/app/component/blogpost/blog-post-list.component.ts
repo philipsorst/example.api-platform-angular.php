@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Restangular} from "ngx-restangular";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'blog-post-list',
@@ -7,14 +8,12 @@ import {Restangular} from "ngx-restangular";
 })
 export class BlogPostListComponent implements OnInit {
 
-    blogPosts;
+    blogPosts: Observable<any>;
 
     constructor(private restangular: Restangular) {
     }
 
     ngOnInit(): void {
-        this.restangular.all('blog_posts').getList().subscribe((blogPosts) => {
-            this.blogPosts = blogPosts
-        });
+        this.blogPosts = this.restangular.all('blog_posts').getList();
     }
 }

@@ -12,7 +12,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity
  * @ApiResource(
- *     attributes={"order"={"created": "DESC"}, "normalization_context"={"groups"={"blog_post_list"}}},
+ *     attributes={"order"={"created": "DESC"},
+ *     "normalization_context"={"groups"={"blog_post_list"}},
+ *     "filters"={"blog_post.group_filter"}},
  *     itemOperations={
  *          "get"={"method"="GET", "normalization_context"={"groups"={"blog_post_detail"}}}
  *     }
@@ -68,7 +70,7 @@ class BlogPost
     private $content;
 
     /**
-     * @Groups({"blog_post_list", "blog_post_detail"})
+     * @Groups({"blog_post_comments"})
      * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="blogPost")
      *

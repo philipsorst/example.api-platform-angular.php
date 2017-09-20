@@ -5,9 +5,12 @@ namespace DomainBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={"order"={"created": "DESC"}, "normalization_context"={"groups"={"comment_list"}}}
+ * )
  * @ORM\Entity
  *
  * @author Philip Washington Sorst <philip@sorst.net>
@@ -32,6 +35,7 @@ class Comment
     private $blogPost;
 
     /**
+     * @Groups({"comment_list", "blog_post_comments"})
      * @ApiProperty(writable=false)
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=false)
@@ -41,6 +45,7 @@ class Comment
     private $author;
 
     /**
+     * @Groups({"comment_list", "blog_post_comments"})
      * @ApiProperty(writable=false)
      * @ORM\Column(type="datetime", nullable=false)
      *
@@ -49,6 +54,7 @@ class Comment
     private $created;
 
     /**
+     * @Groups({"comment_list", "blog_post_comments"})
      * @ORM\Column(type="string", nullable=false)
      *
      * @var string

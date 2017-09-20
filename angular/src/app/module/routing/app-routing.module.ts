@@ -6,7 +6,7 @@ import {UserLoginComponent} from "../../component/user/user-login.component";
 import {NotFoundComponent} from "../../component/util/not-found.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: 'posts', pathMatch: 'full'},
+    {path: '', redirectTo: '/posts', pathMatch: 'full'},
     {path: 'posts', component: BlogPostListComponent},
     {path: 'posts/:id', component: BlogPostDetailComponent},
     {path: 'login', component: UserLoginComponent},

@@ -1,0 +1,13 @@
+<div *ngIf="blogPost | async; let blogPost; else loading">
+    <h1>{{blogPost.title}}</h1>
+    <div class="line-breaker">{{blogPost.content}}</div>
+    <h2>Kommentare</h2>
+    <ul>
+        <li *ngFor="let comment of blogPost.comments">
+            <div class="line-breaker">{{comment.content}}</div>
+        </li>
+    </ul>
+</div>
+<ng-template #loading>
+    <div class="text-center"><span class="fa fa-spin fa-circle-o-notch fa-3x"></span></div>
+</ng-template>
