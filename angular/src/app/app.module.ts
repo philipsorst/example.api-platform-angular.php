@@ -8,13 +8,15 @@ import {RestangularConfigFactory} from "./service/restangular.factory";
 import {BlogPostListComponent} from "./component/blogpost/blog-post-list.component";
 import {BlogPostDetailComponent} from "./component/blogpost/blog-post-detail.component";
 import {UserLoginComponent} from "./component/user/user-login.component";
+import {NotFoundComponent} from "./component/util/not-found.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         BlogPostListComponent,
         BlogPostDetailComponent,
-        UserLoginComponent
+        UserLoginComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
