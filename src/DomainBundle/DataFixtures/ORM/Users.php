@@ -25,7 +25,8 @@ class Users extends Fixture
         $user = $userManager->createUser();
         $user->setUsername('admin');
         $user->setEmail('admin@example.com');
-        $user->setPassword('admin');
+        $user->setPlainPassword('admin');
+        $user->setEnabled(true);
         $userManager->updateUser($user);
         $this->addReference(self::ADMIN, $user);
 
@@ -36,7 +37,8 @@ class Users extends Fixture
             $user->setUsername($username);
             $user->setFullname($fakeGenerator->name());
             $user->setEmail($fakeGenerator->email);
-            $user->setPassword($username);
+            $user->setPlainPassword($username);
+            $user->setEnabled(true);
             $userManager->updateUser($user);
             $this->addReference('user-' . $i, $user);
         }

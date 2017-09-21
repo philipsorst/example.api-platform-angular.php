@@ -15,6 +15,11 @@
 !/var/data
 /var/data/*
 !var/data/.gitkeep
+
+/var/security/*
+!var/security/private.pem
+!var/security/public.pem
+
 !var/SymfonyRequirements.php
 /vendor/
 /angular/node_modules/

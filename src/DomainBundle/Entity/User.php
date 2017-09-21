@@ -23,30 +23,47 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"user-read"})
+     *
+     * @var int
      */
     protected $id;
 
     /**
      * @Groups({"user"})
+     *
+     * @var string
      */
     protected $email;
 
     /**
-     * @Groups({"blog_post_list","blog_post_detail", "comment_list"})
+     * @Groups({"user","blog_post_list","blog_post_detail", "comment_list"})
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user"})
+     *
+     * @var string
      */
     protected $fullname;
 
     /**
      * @Groups({"user-write"})
+     *
+     * @var string
      */
     protected $plainPassword;
 
     /**
      * @Groups({"user"})
+     *
+     * @var string
      */
     protected $username;
+
+    /**
+     * @Groups({"user-read"})
+     *
+     * @var array
+     */
+    protected $roles;
 
     public function setFullname($fullname)
     {

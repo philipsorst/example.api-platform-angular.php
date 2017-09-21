@@ -9,6 +9,8 @@ import {BlogPostListComponent} from "./component/blogpost/blog-post-list.compone
 import {BlogPostDetailComponent} from "./component/blogpost/blog-post-detail.component";
 import {UserLoginComponent} from "./component/user/user-login.component";
 import {NotFoundComponent} from "./component/util/not-found.component";
+import {FormsModule} from "@angular/forms";
+import {AuthService} from "./service/auth.service";
 
 @NgModule({
     declarations: [
@@ -20,10 +22,13 @@ import {NotFoundComponent} from "./component/util/not-found.component";
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         RestangularModule.forRoot(RestangularConfigFactory),
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+        AuthService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

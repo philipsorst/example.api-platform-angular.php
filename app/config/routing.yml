@@ -1,17 +1,18 @@
+api_login_check:
+    path: /api/login_check
+
+gesdinet_jwt_refresh_token:
+    path:     /api/login_refresh
+    defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+
 api:
     resource: '.'
     type: 'api_platform'
     prefix: 'api'
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-api_login_check:
-    path: /login/token
-
-gesdinet_jwt_refresh_token:
-    path:     /login/refresh
-    defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+#    prefix: 'api'
 
 domain:
     resource: "@DomainBundle/Action/"
