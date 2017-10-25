@@ -1,0 +1,7 @@
+services:
+
+    example_integration.service.url:
+        class: IntegrationBundle\Service\UrlService
+        arguments:
+            - '%base_url%'
+            - '@router'

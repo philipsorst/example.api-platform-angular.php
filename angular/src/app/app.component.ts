@@ -9,6 +9,7 @@ import {Subscription} from "rxjs/Subscription";
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+
     currentUserSubscription: Subscription;
     currentUser: User;
 

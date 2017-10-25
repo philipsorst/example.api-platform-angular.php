@@ -50,14 +50,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
-            "bin/set-permissions",
-            "cd angular && npm install && npm run-script build",
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "bin/console example-integration:build-angular"
         ],
         "post-update-cmd": [
-            "bin/set-permissions",
-            "cd angular && npm install && npm run-script build",
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "bin/console example-integration:build-angular"
         ]
     },
     "config": {

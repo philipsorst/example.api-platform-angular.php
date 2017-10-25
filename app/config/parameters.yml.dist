@@ -9,3 +9,5 @@ parameters:
     cors_allow_origin: http://localhost
 
     varnish_urls: [http://varnish]
+
+    base_url: http://localhost:8000

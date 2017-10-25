@@ -3,15 +3,19 @@
 /build/
 /phpunit.xml
 /var/*
+
 !/var/cache
 /var/cache/*
 !var/cache/.gitkeep
+
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
+
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep
+
 !/var/data
 /var/data/*
 !var/data/.gitkeep
@@ -22,6 +26,10 @@
 
 !var/SymfonyRequirements.php
 /vendor/
-/angular/node_modules/
 /web/bundles/
 /web/app/*
+
+/angular/node_modules/
+/angular/src/environments/api-config.ts
+/angular/src/manifest.json
+/angular/src/index.html
