@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {Credentials} from "../../model/credentials";
 import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
+import {User} from "../../model/user";
 
 @Component({
     selector: 'user-login',
@@ -8,12 +10,23 @@ import {AuthService} from "../../service/auth.service";
 })
 export class UserLoginComponent {
 
-    credentials: Credentials = new Credentials();
+    public credentials: Credentials = new Credentials();
 
-    constructor(private authService: AuthService) {
+    public error: string = null;
+
+    constructor(private authService: AuthService, private router: Router) {
     }
 
-    login() {
-        this.authService.login(this.credentials);
+    public login() {
+        this.error = null;
+        this.authService.login(this.credentials)
+            .then((user: User) => this.router.navigateByUrl(this.getReturnUrl()))
+            .catch((reason) => {
+                this.error = reason.data.message;
+            });
+    }
+
+    private getReturnUrl() {
+        return localStorage.getItem('example_app.return_url') || '/';
     }
 }

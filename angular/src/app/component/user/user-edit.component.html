@@ -1,0 +1,23 @@
+<h1>Edit User</h1>
+
+<form #userForm="ngForm" *ngIf="user != null" (ngSubmit)="save()">
+    <div class="form-group">
+        <label for="userid">Id</label>
+        <input type="text" id="userid" name="userid" [(ngModel)]="user.id" disabled="disabled" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="user.username" disabled="disabled"
+               class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input type="date" id="birthday" name="birthday" [ngModel]="user.birthDay | date:'yyyy-MM-dd'"
+               (ngModelChange)="user.birthDay = $event" class="form-control" #birthday="ngModel"
+               [ngClass]="{'is-invalid': !birthday.valid}" />
+    </div>
+
+    <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary">Save</button>
+</form>

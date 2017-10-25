@@ -2,27 +2,34 @@ import {Injectable} from "@angular/core";
 import {Restangular} from "ngx-restangular";
 import {Credentials} from "../model/credentials";
 import {User} from "../model/user";
-import {Subject} from "rxjs/Subject";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class AuthService {
 
-    private currentUser = new Subject<User>();
+    private currentUserObservable = new BehaviorSubject<User>(null);
 
     constructor(private restangular: Restangular) {
     }
 
-    login(credentials: Credentials) {
-        this.restangular.all('login_check').post(credentials).toPromise().then((response) => {
+    public login(credentials: Credentials): Promise<User> {
+        return this.restangular.all('login_check').post(credentials).toPromise().then((response) => {
             this.restangular.configuration.defaultHeaders.Authorization = 'Bearer ' + response.token;
-            this.restangular.all('users').one('me').get().toPromise().then((response) => {
-                this.currentUser.next(response);
-                console.log('Login successfull', this.currentUser);
+            this.restangular.all('users').one('me').get().toPromise().then((user: User) => {
+                this.currentUserObservable.next(user);
+                console.log('Login successfull', this.currentUserObservable);
+
+                return user;
             });
         });
     }
 
-    getCurentUser() {
-        return this.currentUser;
+    public getCurentUserObservable(): Observable<User> {
+        return this.currentUserObservable;
+    }
+
+    public getCurrentUser(): User | null {
+        return this.currentUserObservable.getValue();
     }
 }

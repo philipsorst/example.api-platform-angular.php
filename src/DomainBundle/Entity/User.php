@@ -65,6 +65,14 @@ class User extends BaseUser
      */
     protected $roles;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     * @Groups({"user-read", "user-write"})
+     *
+     * @var \DateTime|null
+     */
+    private $birthDay;
+
     public function setFullname($fullname)
     {
         $this->fullname = $fullname;
@@ -80,5 +88,21 @@ class User extends BaseUser
     public function isUser(UserInterface $user = null)
     {
         return $user instanceof self && $user->id === $this->id;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getBirthDay(): ?\DateTime
+    {
+        return $this->birthDay;
+    }
+
+    /**
+     * @param \DateTime|null $birthDay
+     */
+    public function setBirthDay(?\DateTime $birthDay)
+    {
+        $this->birthDay = $birthDay;
     }
 }

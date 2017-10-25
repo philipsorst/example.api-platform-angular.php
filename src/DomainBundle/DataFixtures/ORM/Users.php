@@ -13,6 +13,7 @@ use Faker\Factory;
 class Users extends Fixture
 {
     const ADMIN = 'user-admin';
+    const DEFAULT = 'user-default';
 
     /**
      * {@inheritdoc}
@@ -27,8 +28,17 @@ class Users extends Fixture
         $user->setEmail('admin@example.com');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
+        $user->addRole('ROLE_ADMIN');
         $userManager->updateUser($user);
         $this->addReference(self::ADMIN, $user);
+
+        $user = $userManager->createUser();
+        $user->setUsername('user');
+        $user->setEmail('user@example.com');
+        $user->setPlainPassword('user');
+        $user->setEnabled(true);
+        $userManager->updateUser($user);
+        $this->addReference(self::DEFAULT, $user);
 
         for ($i = 0; $i < 50; $i++) {
             /** @var User $user */

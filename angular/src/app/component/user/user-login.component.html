@@ -1,3 +1,7 @@
+<div class="alert alert-danger" *ngIf="error">
+    {{error}}
+</div>
+
 <form #loginForm="ngForm" (ngSubmit)="login()">
     <div class="form-group">
         <label for="username">Username</label>

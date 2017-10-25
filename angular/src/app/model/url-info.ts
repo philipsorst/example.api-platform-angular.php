@@ -26,7 +26,7 @@ export class UrlInfo {
     }
 
     public getRoot(): string {
-        let root = this.protocol + '//' + this.host;
+        let root = this.protocol + '//' + this.hostname;
         if (this.port != null && this.port !== '' && this.port !== '80') {
             root += ':' + this.port;
         }
