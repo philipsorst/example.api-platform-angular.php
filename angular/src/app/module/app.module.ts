@@ -14,6 +14,7 @@ import {AuthService} from "../service/auth.service";
 import {UserEditComponent} from "../component/user/user-edit.component";
 import {UserListComponent} from "../component/user/user-list.component";
 import {UserService} from "../service/user.service";
+import {LoggedinAuthguardService} from "../service/loggedin-authguard.service";
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import {UserService} from "../service/user.service";
     ],
     providers: [
         AuthService,
+        LoggedinAuthguardService,
         UserService
     ],
     bootstrap: [AppComponent]
